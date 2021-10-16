@@ -21,6 +21,6 @@ The roles have been divided among all of us.
 ## Shreyase
 1. Scrape books related to **Medical**.
 2. Go inside the `books` folder.
-3. Open terminal and run the command - `scrapy crawl relationshipspider`.
+3. Open terminal and run the command - `scrapy crawl medicalspider`.
 
 After completion of this step, a `.csv` file will be generated in the `product_links` directory. Push that file to the `Data` folder in the parent directory and ping me!
