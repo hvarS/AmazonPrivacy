@@ -20,6 +20,13 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
+        parent_dir = "./product_links"
+        isExist = os.path.isdir(parent_dir)
+        if isExist:
+            pass
+        else:
+            os.mkdir(parent_dir)
+        fn = parent_dir + '/LGBT_books' + '.csv'
         fn = './product_links/Politics_books' + '.csv'
         
         product_links = []

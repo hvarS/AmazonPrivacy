@@ -20,7 +20,13 @@ class QuotesSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        fn = './product_links/LGBT_books' + '.csv'
+        parent_dir = "./product_links"
+        isExist = os.path.isdir(parent_dir)
+        if isExist:
+            pass
+        else:
+            os.mkdir(parent_dir)
+        fn = parent_dir + '/LGBT_books' + '.csv'
         
         product_links = []
         for block in response.xpath('//a[@class="a-link-normal a-text-normal"]'):
