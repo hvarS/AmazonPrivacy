@@ -3,7 +3,7 @@
 We are using Presidio(Open Sourced - MSR) to detect the PII in the textual reviews that we obtain .
 
 Before running the script , please run the following commands in your system :
-> !pip install presidio-analyzer
+> !pip install presidio-analyzer  
 > !python -m spacy download en_core_web_lg
 
 ### Sample text I/O(for presidio) :
