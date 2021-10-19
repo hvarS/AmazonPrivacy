@@ -3,7 +3,7 @@
 The roles have been divided among all of us.
 
 ## Harshvardhan
-1. Scrape books related to --**Religion**-- **DONE**.
+1. Scrape books related to ~~**Religion**~~ **DONE**.
 2. Go inside the `books` folder.
 3. Open terminal and run the command - `scrapy crawl religionspider`.
 
