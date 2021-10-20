@@ -1,0 +1,20 @@
+
+Host batul
+        HostName cnerg.iitkgp.ac.in
+        User shreyase-mm
+        Port 8201
+
+Host tintin
+        HostName 10.5.200.15
+        User shreyase-mm
+        Port 8201
+        
+.ssh/config
+
+AmzReviewsEconomic
+
+Port Forwarding
+ssh -L 8889:localhost:28889 batul 
+ssh -L 8888:localhost:18888 batul  (for jupyternotebook)
+
+Jupyterlab password - AmzReviews
