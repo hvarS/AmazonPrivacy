@@ -53,20 +53,20 @@ def scrape_profile_reviews(search_batch):
             reviews += review.text+"\n"
             driver.back()
 
-        open(f'{file_name}.txt','a+').write("##$$**"+"\n"+name+"\n"+"**\n"+reviews+"\n")
+        open(f'{folder_name}.txt','a+').write("##$$**"+"\n"+name+"\n"+"**\n"+reviews+"\n")
 
     driver.close()
 
 def main():
     # Parse the argument
     args = parser.parse_args()
-    global file_name
-    file_name = ((args.dir).split('/'))[-1]
-    print(file_name)
+    global folder_name
+    file_name = ((((args.dir).split('/'))[-1]).split('.'))[0]
+    folder_name = "AggregatedReviewsScraping/"+file_name
     links = pd.read_csv(args.dir)
-    links = list(links["Profile"])
-
-    evenLinks = chunks(links,math.ceil(math.sqrt(len(links))))
+    links = list(links["Profile Links"])
+    '''math.ceil(math.sqrt(len(links)'''
+    evenLinks = chunks(links,len(links))
 
     global options
 
