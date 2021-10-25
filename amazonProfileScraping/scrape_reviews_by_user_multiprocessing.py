@@ -15,8 +15,8 @@ import argparse
 #Start the program by taking input of the csv file for which the data to scrape
 
 parser = argparse.ArgumentParser(description='Scrape Reviews of the Individual Users')
-parser.add_argument('--d', default='../review_links/user_profiles/Religion0_profiles.csv', metavar='DIR',
-                    help = 'dir for loading public user link')
+parser.add_argument('--dir', default='../review_links/user_profiles/Religion0_profiles.csv', metavar='DIR',
+                    help = 'dir for loading public user link',required=True)
 
 
 
@@ -53,14 +53,18 @@ def scrape_profile_reviews(search_batch):
             reviews += review.text+"\n"
             driver.back()
 
-        open("Output.txt",'a+').write("##$$**"+"\n"+name+"\n"+"**\n"+reviews+"\n")
+        open(f'{file_name}.txt','a+').write("##$$**"+"\n"+name+"\n"+"**\n"+reviews+"\n")
 
     driver.close()
 
 def main():
-
-    links = pd.read_csv("scraping_2/com-2/get_profile_links/profile_links_trial.csv")
-    links = list(links["Profile Links"])
+    # Parse the argument
+    args = parser.parse_args()
+    global file_name
+    file_name = ((args.dir).split('/'))[-1]
+    print(file_name)
+    links = pd.read_csv(args.dir)
+    links = list(links["Profile"])
 
     evenLinks = chunks(links,math.ceil(math.sqrt(len(links))))
 
