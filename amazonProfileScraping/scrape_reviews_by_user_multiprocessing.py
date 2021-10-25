@@ -10,6 +10,15 @@ import multiprocessing as mp
 from multiprocessing import Process,Queue,Array
 import pandas as pd
 import math
+import argparse
+
+#Start the program by taking input of the csv file for which the data to scrape
+
+parser = argparse.ArgumentParser(description='Scrape Reviews of the Individual Users')
+parser.add_argument('--d', default='../review_links/user_profiles/Religion0_profiles.csv', metavar='DIR',
+                    help = 'dir for loading public user link')
+
+
 
 def chunks(lst, n):
     """Yield successive n-sized chunks from lst."""
@@ -17,13 +26,6 @@ def chunks(lst, n):
         yield lst[i:i + n]
 
 
-links = pd.read_csv("scraping_2/com-2/get_profile_links/profile_links_trial.csv")
-links = list(links["Profile Links"])
-
-evenLinks = chunks(links,math.ceil(math.sqrt(len(links))))
-
-options = Options()
-options.headless = True
 
 
 def scrape_profile_reviews(search_batch):
@@ -55,20 +57,36 @@ def scrape_profile_reviews(search_batch):
 
     driver.close()
 
+def main():
+
+    links = pd.read_csv("scraping_2/com-2/get_profile_links/profile_links_trial.csv")
+    links = list(links["Profile Links"])
+
+    evenLinks = chunks(links,math.ceil(math.sqrt(len(links))))
+
+    global options
+
+    options = Options()
+    options.headless = True
+
+    startTime = time.time()
+    processes = []
+
+    for links in evenLinks:
+        p = mp.Process(target=scrape_profile_reviews,args=[links])
+        p.start()
+        processes.append(p)
+
+    for p in processes:
+        p.join()
+
+    endTime = time.time()
+
+    print(endTime-startTime)
 
 
-startTime = time.time()
-processes = []
+if __name__ == '__main__':
+    main()
 
-for links in evenLinks:
-    p = mp.Process(target=scrape_profile_reviews,args=[links])
-    p.start()
-    processes.append(p)
 
-for p in processes:
-    p.join()
-
-endTime = time.time()
-
-print(endTime-startTime)
 
