@@ -65,8 +65,8 @@ def main():
     folder_name = "AggregatedReviewsScraping/"+file_name
     links = pd.read_csv(args.dir)
     links = list(links["Profile Links"])
-    '''math.ceil(math.sqrt(len(links)'''
-    evenLinks = chunks(links,len(links))
+    
+    evenLinks = chunks(links,math.ceil(math.sqrt(len(links))))
 
     global options
 
