@@ -1,0 +1,7 @@
+presidio_analyzer==2.2.22
+pandas==1.1.5
+webdriver_manager==3.4.2
+selenium==3.141.0
+Scrapy==2.5.0
+itemadapter==0.4.0
+requests==2.18.4
