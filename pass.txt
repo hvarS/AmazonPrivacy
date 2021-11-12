@@ -11,7 +11,9 @@ Host tintin
         
 .ssh/config
 
-AmzReviewsEconomic
+For running hnada - ssh hnada -J batul
+
+Password for batul - AmzReviewsEconomic
 
 Port Forwarding
 ssh -L 8889:localhost:28889 batul 
