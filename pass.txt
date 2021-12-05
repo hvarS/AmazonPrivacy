@@ -11,10 +11,15 @@ Host tintin
         
 .ssh/config
 
-AmzReviewsEconomic
+For running hnada - ssh hnada -J batul
+
+Password for batul - AmzReviewsEconomic
 
 Port Forwarding
 ssh -L 8889:localhost:28889 batul 
 ssh -L 8888:localhost:18888 batul  (for jupyternotebook)
 
 Jupyterlab password - AmzReviews
+
+Running Jupyterlab on hnada - ssh -L 8889:localhost:18889 batul
+Then open localhost:8889
