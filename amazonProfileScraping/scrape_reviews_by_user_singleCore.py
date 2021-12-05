@@ -1,9 +1,6 @@
-import selenium
 from selenium import webdriver
 import pandas as pd
 import time
-import io
-import requests
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 
